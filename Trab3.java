@@ -28,21 +28,79 @@ class MinhaData {
     //d) Crie um método toString() para esta classe que retorna uma string representando
     //o objeto data.
     public String toString(){
-        return dia + "/" + this.mes + "/" + this.ano;
+        return dia + "/" + mes + "/" + ano;
     }
     
     //e) Crie métodos para adicionar, ou diminuir, dias, meses e anos de uma data.
-    
-    //    ***** CRIAR VERIFICAÇÃO PARA VALORE DE DATA *****
     public void mudaDia(int dif){
-            dia = dia + dif;
+        if(this.dia + dif > 0 && this.dia + dif < 32){
+            this.dia = this.dia + dif;
+        }
+        else{
+            System.out.println("Dia inválido");
+        }
     }
     public void mudaMes(int dif){
-        mes = mes + dif;
+        if(this.mes + dif > 0 && this.mes + dif < 13){
+            this.mes = this.mes + dif;
+        }
+        else{
+            System.out.println("Mês inválido");
+        }
     }
     public void mudaAno(int dif){
-        ano = ano + dif;
+        if(this.ano+ dif > 0){
+            this.ano = this.ano + dif;
+        }
+        else{
+            System.out.println("Ano inválido");
+        }
     }
+    
+    //f) Crie um método chamado compara, que compara a data representada pelo objeto
+    //alvo da chamada com uma data passada como argumento para o método; o valor
+    //retornado deve ser 0 se essas datas são iguais, -1 se a primeira data é anterior à
+    //última, ou +1 se a primeira é posterior à última.
+    public int compara(MinhaData data){
+        if(this.ano - data.ano < 0){
+            return -1;
+        }
+        else if(this.ano - data.ano > 0){
+            return 1;
+        }
+        else if(this.mes - data.mes < 0){
+            return -1;
+        }
+        else if(this.mes - data.mes > 0){
+            return 1;
+        }
+        else if(this.dia - data.dia < 0){
+            return -1;
+        }
+        else if(this.dia - data.dia > 0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+    
+}
+
+//g) Crie uma segunda classe, chamada DataComemorativa, a qual representará as
+//diferentes datas comemorativas. Uma data comemorativa normalmente contém
+//um nome, se é feriado ou não, se este feriado é mundial e o dia associado.
+class DataComemorativa {
+    String nome;
+    int feriado;
+    int mundial;
+    int dia;
+    int mes;
+    
+    //h) Crie uma terceira classe chamada DatasComemorativas, a qual deverá conter
+    //uma coleção que armazenará todas as datas comemorativas existentes.
+    
+    
     
 }
 
@@ -56,5 +114,6 @@ public class Trab3 {
         System.out.println(data2.toString());
         data.mudaMes(-3);
         data2.mudaDia(-15);
+        System.out.println(data2.compara(data));
     }
 }
