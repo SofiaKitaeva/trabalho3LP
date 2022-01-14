@@ -1,3 +1,7 @@
+package trab3;
+import java.util.ArrayList;
+import java.util.List;
+
 class MinhaData {
     //a) Crie uma classe chamada MinhaData, a qual deverá
     //conter 3 campos inteiros que representam o dia, mês e ano desta data.
@@ -90,18 +94,27 @@ class MinhaData {
 //g) Crie uma segunda classe, chamada DataComemorativa, a qual representará as
 //diferentes datas comemorativas. Uma data comemorativa normalmente contém
 //um nome, se é feriado ou não, se este feriado é mundial e o dia associado.
-class DataComemorativa {
+class DataComemorativa extends MinhaData {
+    public DataComemorativa(int dia, int mes, int ano){
+        super(dia, mes, ano);
+    }
     String nome;
     int feriado;
-    int mundial;
-    int dia;
-    int mes;
+    int mundial;  
+}
+
+//h) Crie uma terceira classe chamada DatasComemorativas, a qual deverá conter
+//uma coleção que armazenará todas as datas comemorativas existentes.
+class DatasComemorativas extends DataComemorativa{
     
-    //h) Crie uma terceira classe chamada DatasComemorativas, a qual deverá conter
-    //uma coleção que armazenará todas as datas comemorativas existentes.
-    
-    
-    
+    List<DataComemorativa> colecao = new ArrayList();
+   
+   //i) Implemente nesta terceira classe o método adiciona(), que insere uma data
+    //comemorativa na lista.
+   public void adiciona() {
+       
+       
+   }
 }
 
 public class Trab3 {
