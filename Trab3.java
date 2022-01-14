@@ -1,7 +1,6 @@
 //Sofia Kitaeva - matrícula: 120060023
 
 import java.util.ArrayList;
-import java.util.List;
 
 class MinhaData {
     //  a) Crie uma classe chamada MinhaData, a qual deverá
@@ -117,10 +116,11 @@ class DataComemorativa extends MinhaData {
 
 //  h) Crie uma terceira classe chamada DatasComemorativas, a qual deverá conter
 //  uma coleção que armazenará todas as datas comemorativas existentes.
-class DatasComemorativas extends DataComemorativa{
-    List<DataComemorativa> colecao = new ArrayList();
-    
+class DatasComemorativas {
+    ArrayList<DataComemorativa> colecao;
+        
     public DatasComemorativas(){
+       colecao = new ArrayList();
     }
 
     //  i) Implemente nesta terceira classe o método adiciona(), que insere uma data
@@ -128,13 +128,17 @@ class DatasComemorativas extends DataComemorativa{
     public void adiciona(DataComemorativa nova) {
         colecao.add(nova);
     }
-       
+
     //  j) Implemente nesta mesma classe o método remove(nome), que remove da lista a
     //  data comemorativa que possui o parâmetro nome fornecido.
     public void remove(String data){
-        colecao.remove(colecao.indexOf(data));
+        for(DataComemorativa aux : colecao){
+            if(aux.nome == data){
+                colecao.remove(aux);
+            }
+        }
     }
-        
+
     //  k) Implemente um método chamado horasNaoTrabalhadas(), o qual deve retornar a
     //  quantidade de horas não trabalhadas. Para tal, deve-se contar a quantidade de
     //  datas comemorativas que são feriados e multiplicá-la por 8 (oito) que é a carga
@@ -143,7 +147,7 @@ class DatasComemorativas extends DataComemorativa{
         int nTrab = 0;
         for(DataComemorativa aux : colecao){
             if(aux.feriado == 's' || aux.feriado == 'S'){
-                 nTrab = nTrab + 8;
+                nTrab = nTrab + 8;
             }
         }
         return nTrab;
@@ -153,7 +157,7 @@ class DatasComemorativas extends DataComemorativa{
 public class Trab3 {
     public static void main(String[] args) {
         MinhaData data = new MinhaData(07, 11, 2001);
-        MinhaData data2 = new MinhaData("15/01/2022");
+        MinhaData data2 = new MinhaData("01/06/1973");
         System.out.println(data.ano);
         System.out.println(data2.dia);
         System.out.println(data.toString());
@@ -161,7 +165,25 @@ public class Trab3 {
         data.mudaMes(-3);
         data2.mudaDia(-15);
         System.out.println(data2.compara(data));
-        DataComemorativa natal = new DataComemorativa(25, 12, 2022, "Natal", 'S', 'S' );
-        System.out.println(natal.mundial);
+        DataComemorativa anoNovo = new DataComemorativa(31, 12, 2022, "Ano Novo", 'S', 'S');
+        System.out.println(anoNovo.mundial);
+        DatasComemorativas lista = new DatasComemorativas();
+        lista.adiciona(anoNovo);
+        DataComemorativa diaDosPais = new DataComemorativa("14/08/2022", "Dia dos Pais", 'N', 'S');
+        lista.adiciona(diaDosPais);
+        System.out.println(lista.horasNaoTrabalhadas());
+        lista.remove("Ano Novo");
+        System.out.println("\n\t+---+---+---+ TESTE +---+---+---+\n");
+        
+        //  l) Teste as classes criadas da seguinte forma: i) No método main(), crie 1 data que
+        //  represente a data atual e outra que represente o Natal deste ano; ii) Chame o
+        //  método de comparação das datas e imprima seu valor; iii) Adicione o objeto
+        //  Natal à coleção DatasComemorativas e chame o método
+        //  horasNaoTrabalhadas().
+        MinhaData hoje = new MinhaData("14/01/2011");
+        DataComemorativa natal = new DataComemorativa(31, 12, 2022, "Natal", 'S', 'S');
+        System.out.println(hoje.compara(natal));
+        lista.adiciona(natal);
+        System.out.println(lista.horasNaoTrabalhadas());
     }
 }
