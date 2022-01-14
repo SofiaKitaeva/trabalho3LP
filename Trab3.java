@@ -87,7 +87,6 @@ class MinhaData {
             return 0;
         }
     }
-    
 }
 
 //  g) Crie uma segunda classe, chamada DataComemorativa, a qual representará as
@@ -140,8 +139,7 @@ class DatasComemorativas extends DataComemorativa{
     //  horária diária usual de trabalho.
     public int horasNaoTrabalhadas(){
         int nTrab = 0;
-        for(int i = 0; i < colecao.size(); i++){
-            DataComemorativa aux = colecao.get(i);
+        for(DataComemorativa aux : colecao){
             if(aux.feriado == 's' || aux.feriado == 'S'){
                  nTrab = nTrab + 8;
             }
@@ -163,6 +161,5 @@ public class Trab3 {
         System.out.println(data2.compara(data));
         DataComemorativa natal = new DataComemorativa(25, 12, 2022, "Natal", 'S', 'S' );
         System.out.println(natal.mundial);
-        DatasComemorativas lista = new DatasComemorativas();
     }
 }
